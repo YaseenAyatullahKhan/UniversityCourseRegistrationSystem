@@ -4,8 +4,9 @@ public class OnlineCourse extends Course {
     private boolean recordingAvailable;
     private String meetingLink;
 
-    //constructor
-    public OnlineCourse(String meetingPlatform, boolean recordingAvailable, String meetingLink) {
+    //constructors
+    public OnlineCourse() {}
+    public OnlineCourse(String courseCode, String courseName, int creditHours, int maxCapacity, int currentEnrollment, String meetingPlatform, boolean recordingAvailable, String meetingLink) {
         super(courseCode, courseName, creditHours, maxCapacity, currentEnrollment);
         this.meetingPlatform = meetingPlatform;
         this.recordingAvailable = recordingAvailable;
@@ -39,7 +40,7 @@ public class OnlineCourse extends Course {
         }
     }
 
-    //display method
+    //overriden display method
     @Override
     public void displayCourseInfo() {
         super.displayCourseInfo();
