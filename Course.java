@@ -6,6 +6,7 @@ public class Course {
     private int creditHours;
     private int maxCapacity;
     private int currentEnrollment;
+    private ArrayList<String> prerequisites;
     
     //no-argument constructor
     public Course() {
@@ -14,10 +15,11 @@ public class Course {
         this.creditHours = 0;
         this.maxCapacity = 0;
         this.currentEnrollment = 0;
+        this.prerequisites = new ArrayList<String>();
     }
     
     //parameterized constructor
-    public Course(String courseCode, String courseName, int creditHours, int maxCapacity, int currentEnrollment) {
+    public Course(String courseCode, String courseName, int creditHours, int maxCapacity, int currentEnrollment, ArrayList<String> prerequisites) {
         if (courseCode != null && courseCode != "") {
             this.courseCode courseCode;
         } else {
@@ -42,6 +44,11 @@ public class Course {
             this.currentEnrollment = currentEnrollment;
         } else {
             throw new IllegalArgumentException("Current Enrollment cannot be negative or zero!");
+        }
+        if (prerequisites == this.prerequisites) {
+            this.prerequisites = prerequisites;
+        } else {
+            throw new IllegalArgumentException("Not all prerequisites achieved!");
         }
     }
     
