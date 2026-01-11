@@ -21,7 +21,7 @@ public class Course {
     //parameterized constructor
     public Course(String courseCode, String courseName, int creditHours, int maxCapacity, int currentEnrollment, ArrayList<String> prerequisites) {
         if (courseCode != null && courseCode != "") {
-            this.courseCode courseCode;
+            this.courseCode = courseCode;
         } else {
             throw new IllegalArgumentException("Course Code cannot be empty!");
         }
@@ -62,10 +62,10 @@ public class Course {
     public String getCreditHours() {
         return this.creditHours;
     }
-    public String getMaxCapacity() {
+    public int getMaxCapacity() {
         return this.maxCapacity;
     }
-    public String getCurrentEnrollment() {
+    public int getCurrentEnrollment() {
         return this.currentEnrollment;
     }
     

@@ -38,7 +38,7 @@ public class Student {
         this.maxCredits = maxCredits;
     }
 
-    //enroll in a course
+    //methods
     public boolean enrollInCourse(Course course) {
         if (totalCreditsEnrolled + course.getCredits() <= maxCredits && course.getCurrentEnrollment() < course.getMaxCapacity()) {
             enrolledCourses.add(course);
@@ -58,10 +58,15 @@ public class Student {
         System.out.println("Student ID: " + this.studentID);
         System.out.println("Name: " + this.name);
         System.out.println("Maximum Credits Allowed: " + this.maxCredits);
-        System.out.println("Total Credits Enrolled: " + this.totalCreditsEnrolled);
+        System.out.println("Total Credits Enrolled: " + totalCreditsEnrolled);
         System.out.println("Enrolled Courses: ");
-        for (Course course : enrolledCourses) {
-            System.out.println("- " + course.getCourseCode() + ": " + course.getCourseName());
+        for (int i = 0; i < enrolledCourses.size(); i++) {
+            Course course = enrolledCourses.get(i);
+            System.out.println(course.getCourseCode() + " : " + course.getCourseName());
         }
+    }
+    //method to check if student can enroll in more courses
+    public boolean noMoreCourses() {
+        return (totalCreditsEnrolled > maxCredits);
     }
 }
