@@ -47,4 +47,5 @@ public class OnlineCourse extends Course {
         System.out.println("Meeting Platform: " + meetingPlatform);
         System.out.println("Recording Available: " + recordingAvailable);
         System.out.println("Meeting Link: " + meetingLink);
+    }
 }

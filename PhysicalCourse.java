@@ -12,18 +12,6 @@ public class PhysicalCourse extends Course {
         this.hasLab = hasLab;
     }
 
-    public char getWhichBlock() {
-        return whichBlock;
-    }
-
-    public String getRoomName() {
-        return roomName;
-    }
-
-    public boolean getHasLab() {
-        return hasLab;
-    }
-
     //getters and setters
     public char getWhichBlock() {
         return whichBlock;

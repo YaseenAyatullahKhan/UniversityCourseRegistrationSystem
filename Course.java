@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 //parent class
 public class Course {
     //instance variables
@@ -45,11 +46,7 @@ public class Course {
         } else {
             throw new IllegalArgumentException("Current Enrollment cannot be negative or zero!");
         }
-        if (prerequisites == this.prerequisites) {
-            this.prerequisites = prerequisites;
-        } else {
-            throw new IllegalArgumentException("Not all prerequisites achieved!");
-        }
+        this.prerequisites = prerequisites;
     }
     
     //get and set methods
@@ -67,6 +64,9 @@ public class Course {
     }
     public int getCurrentEnrollment() {
         return this.currentEnrollment;
+    }
+    public ArrayList<String> getPrerequisites() {
+        return this.prerequisites;
     }
     
     public void setMaxCapacity(int maxCapacity) {

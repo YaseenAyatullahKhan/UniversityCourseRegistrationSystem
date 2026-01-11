@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 public class Student {
     private String studentID;
     private String name;
@@ -40,7 +41,22 @@ public class Student {
 
     //methods
     public boolean enrollInCourse(Course course) {
-        if (totalCreditsEnrolled + course.getCredits() <= maxCredits && course.getCurrentEnrollment() < course.getMaxCapacity()) {
+        boolean hasPrerequisites;
+        if (course.getPrerequisites() != null) {
+            //check if student has the prerequisite course(s)
+            for (int x = 0; x < course.getPrerequisites().size(); x++) {
+                hasPrerequisites = false;
+                for (int y = 0; y < enrolledCourses.size(); y++) {
+                    if (course.getPrerequisites().get(x).equals(enrolledCourses.get(y).getCourseCode())) {
+                        hasPrerequisites = true;
+                    }
+                }
+            }
+        } else {
+            hasPrerequisites = true;
+        }
+        //checking if student can enroll then adding the course
+        if ((hasPrerequisites == true) && (totalCreditsEnrolled + course.getCredits() <= maxCredits) && (course.getCurrentEnrollment() < course.getMaxCapacity())) {
             enrolledCourses.add(course);
             totalCreditsEnrolled += course.getCredits();
             course.incrementEnrollment();
