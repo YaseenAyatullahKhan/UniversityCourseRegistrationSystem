@@ -26,7 +26,7 @@ The system supports three types of courses:
 **Online Courses** - Include meeting platform (e.g., Google Meet, Teams), recording availability, and a meeting link  
 *(child class)*
 
-**Physical Courses** - Include location details like specifying the Faculty Block, room name, and whether they have a lab class
+**Physical Courses** - Include location details like specifying the Faculty Block, room name, and whether they have a lab class  
 *(child class)*
 
 All courses track prerequisites (courses you need to complete before taking the current one) and include current enrollment numbers to prevent exceeding maximum capacity.
