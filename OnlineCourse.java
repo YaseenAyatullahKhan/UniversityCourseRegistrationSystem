@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class OnlineCourse extends Course {
     //instance variables
     private String meetingPlatform;
@@ -6,8 +8,8 @@ public class OnlineCourse extends Course {
 
     //constructors
     public OnlineCourse() {}
-    public OnlineCourse(String courseCode, String courseName, int creditHours, int maxCapacity, int currentEnrollment, String meetingPlatform, boolean recordingAvailable, String meetingLink) {
-        super(courseCode, courseName, creditHours, maxCapacity, currentEnrollment);
+    public OnlineCourse(String courseCode, String courseName, int creditHours, int maxCapacity, int currentEnrollment, ArrayList<String> prerequisites,String meetingPlatform, boolean recordingAvailable, String meetingLink) {
+        super(courseCode, courseName, creditHours, maxCapacity, currentEnrollment, prerequisites);
         this.meetingPlatform = meetingPlatform;
         this.recordingAvailable = recordingAvailable;
         this.meetingLink = meetingLink;

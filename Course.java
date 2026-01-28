@@ -98,8 +98,8 @@ public class Course {
         this.currentEnrollment--;
     }
     public void displayCourseInfo() {
-        System.out.println("Course Code:", this.courseCode);
-        System.out.println("Course Name:", this.courseName);
+        System.out.println("Course Code: " + this.courseCode);
+        System.out.println("Course Name: " + this.courseName);
         System.out.println("Credit Hours: " + this.creditHours);
         System.out.println("Maximum Capacity: " + this.maxCapacity);
         System.out.println("Current Enrollment: " + this.currentEnrollment);

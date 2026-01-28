@@ -56,7 +56,7 @@ public class Registration {
 
         //dropping a course for student 1
         System.out.println(course2.getCourseName() + " current enrollment number: " + course2.getCurrentEnrollment());
-        boolean st1Drop1 = student1.dropCourse(course2);
+        student1.dropCourse(course2);
         //displaying updated student 1 info and enrolled courses
         student1.displayStudentInfo();
         //displaying course enrollment updated

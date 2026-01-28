@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class PhysicalCourse extends Course {
     private char whichBlock;
     private String roomName;
@@ -5,8 +7,8 @@ public class PhysicalCourse extends Course {
 
     //constructors
     public PhysicalCourse() {}
-    public PhysicalCourse(String courseCode, String courseName, int creditHours, int maxCapacity, int currentEnrollment, char whichBlock, String roomName, boolean hasLab) {
-        super(courseCode, courseName, creditHours, maxCapacity, currentEnrollment);
+    public PhysicalCourse(String courseCode, String courseName, int creditHours, int maxCapacity, int currentEnrollment, ArrayList<String> prerequisites, char whichBlock, String roomName, boolean hasLab) {
+        super(courseCode, courseName, creditHours, maxCapacity, currentEnrollment, prerequisites);
         this.whichBlock = whichBlock;
         this.roomName = roomName;
         this.hasLab = hasLab;

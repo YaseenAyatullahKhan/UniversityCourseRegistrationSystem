@@ -40,8 +40,8 @@ public class Student {
     }
 
     //methods
+    boolean hasPrerequisites;
     public boolean enrollInCourse(Course course) {
-        boolean hasPrerequisites;
         if (course.getPrerequisites() != null) {
             //check if student has the prerequisite course(s)
             for (int x = 0; x < course.getPrerequisites().size(); x++) {
@@ -56,9 +56,9 @@ public class Student {
             hasPrerequisites = true;
         }
         //checking if student can enroll then adding the course
-        if ((hasPrerequisites == true) && (totalCreditsEnrolled + course.getCredits() <= maxCredits) && (course.getCurrentEnrollment() < course.getMaxCapacity())) {
+        if ((hasPrerequisites == true) && (totalCreditsEnrolled + course.getCreditHours() <= maxCredits) && (course.getCurrentEnrollment() < course.getMaxCapacity())) {
             enrolledCourses.add(course);
-            totalCreditsEnrolled += course.getCredits();
+            totalCreditsEnrolled += course.getCreditHours();
             course.incrementEnrollment();
             return true;
         }
@@ -66,7 +66,7 @@ public class Student {
     }
     public void dropCourse(Course course) {
         if (enrolledCourses.remove(course) == true) {
-            totalCreditsEnrolled -= course.getCredits();
+            totalCreditsEnrolled -= course.getCreditHours();
             course.decrementEnrollment();
         }
     }
