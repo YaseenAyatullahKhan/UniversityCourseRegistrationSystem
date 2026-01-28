@@ -44,9 +44,9 @@ public class Registration {
         physicalCourse1.displayCourseInfo();
         System.out.println();
 
-        Student student1 = new Student("Ali Jasim Bin Abdul Ghani", "24217998/1", 12);
-        Student student2 = new Student("Muhammad Ziqri Bin Muhammad Yunus", "20017337/1", 21);
-        Student student3 = new Student("Nur Safiyyah Binti Muhammad Abdul Hakim", "20286145/2", 18);
+        Student student1 = new Student("24217998/1", "Ali Jasim Bin Abdul Ghani", 12);
+        Student student2 = new Student("20017337/1", "Muhammad Ziqri Bin Muhammad Yunus", 21);
+        Student student3 = new Student("20286145/2", "Nur Safiyyah Binti Muhammad Abdul Hakim", 18);
 
         //enrolling student 1 in courses
         boolean st1Enroll1 = student1.enrollInCourse(course2);
@@ -59,14 +59,16 @@ public class Registration {
         //trying to enroll student 1 in a course exceeding their max credit hours
         boolean st1Enroll5 = student1.enrollInCourse(course3);
         //result of trying to enroll student 1 in a course exceeding their max credit hours:
-        System.out.println("Can " + student1.getName() + " enroll in " + course3.getCourseCode() + " now?  " + st1Enroll5);
+        System.out.println("Can " + student1.getName() + " enroll in " + course3.getCourseCode() + " ?  " + st1Enroll5);
         //displaying student 1 info and enrolled courses
+        System.out.println("\nDisplaying Student 1 info and their enrolled courses:");
         student1.displayStudentInfo();
         System.out.println();
         //dropping a course for student 1
         System.out.println(course2.getCourseName() + " current enrollment number: " + course2.getCurrentEnrollment());
         student1.dropCourse(course2);
         //displaying updated student 1 info and enrolled courses
+        System.out.println("\nDisplaying Student 1 updated info and their enrolled courses:");
         student1.displayStudentInfo();
         System.out.println();
         //displaying course enrollment updated
@@ -117,13 +119,13 @@ public class Registration {
         }
         //creating student with empty name
         try {
-            Student invalidStudent1 = new Student("", "24323971/1", 15);
+            Student invalidStudent1 = new Student("24323971/1", "", 15);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
         //creating student with null ID
         try {
-            Student invalidStudent2 = new Student("Muhammad Mujahid bin Abdullah", null, 17);
+            Student invalidStudent2 = new Student(null, "Muhammad Mujahid bin Abdullah", 17);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
