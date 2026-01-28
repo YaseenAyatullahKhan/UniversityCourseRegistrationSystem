@@ -12,7 +12,7 @@ public class Course {
     //no-argument constructor
     public Course() {
         this.courseCode = "No course code";
-        this.coureName = "Unnamed course";
+        this.courseName = "Unnamed course";
         this.creditHours = 0;
         this.maxCapacity = 0;
         this.currentEnrollment = 0;
@@ -24,12 +24,12 @@ public class Course {
         if (courseCode != null && courseCode != "") {
             this.courseCode = courseCode;
         } else {
-            throw new IllegalArgumentException("Course Code cannot be empty!");
+            throw new IllegalArgumentException("Course Code cannot be null or empty!");
         }
         if (courseName != null && courseName != "") {
-            this.coureName = courseName;
+            this.courseName = courseName;
         } else {
-            throw new IllegalArgumentException("Course Name cannot be empty!");
+            throw new IllegalArgumentException("Course Name cannot be null or empty!");
         }
         if (creditHours > 0) {
             this.creditHours = creditHours;
@@ -56,7 +56,7 @@ public class Course {
     public String getCourseName() {
         return this.courseName;
     }
-    public String getCreditHours() {
+    public int getCreditHours() {
         return this.creditHours;
     }
     public int getMaxCapacity() {
