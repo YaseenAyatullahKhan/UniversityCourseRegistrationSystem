@@ -9,8 +9,16 @@ public class PhysicalCourse extends Course {
     public PhysicalCourse() {}
     public PhysicalCourse(String courseCode, String courseName, int creditHours, int maxCapacity, int currentEnrollment, ArrayList<String> prerequisites, char whichBlock, String roomName, boolean hasLab) {
         super(courseCode, courseName, creditHours, maxCapacity, currentEnrollment, prerequisites);
-        this.whichBlock = whichBlock;
-        this.roomName = roomName;
+        if (whichBlock != ' ') {
+            this.whichBlock = whichBlock;
+        } else {
+            throw new IllegalArgumentException("Block cannot be empty!");
+        }
+        if (roomName != null && !roomName.equals("")) {
+            this.roomName = roomName;
+        } else {
+            throw new IllegalArgumentException("Room name cannot be null or empty!");
+        }
         this.hasLab = hasLab;
     }
 

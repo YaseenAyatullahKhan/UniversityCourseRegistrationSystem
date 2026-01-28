@@ -8,19 +8,25 @@ public class Registration {
         Course course3 = new Course("WIX1003", "Computer System and Organization", 3, 40, 39, null);
         //displaying course info for each course
         course1.displayCourseInfo();
+        System.out.println();
         course2.displayCourseInfo();
+        System.out.println();
         course3.displayCourseInfo();
+        System.out.println();
 
         //Online Course objects
         OnlineCourse onlineCourse1 = new OnlineCourse("GIG1003", "Basic Entrepreneurship Enculturation", 2, 1000, 937, null, "Google Meet", false, "https://meet.google.com/lookup/abc-xyz-def");
         OnlineCourse onlineCourse2 = new OnlineCourse("GLT1029", "Basic Arabic Language 1", 2, 15, 12, null, "Microsoft Teams", true, "https://teams.microsoft.com/l/meetup-join/19%3ameeting_NmYyYzYzY2ItZGIxZi00Y2E3LWI3YzItY2E0ZTI3YjI0ZGI4%40thread.v2/0?context=%7b%22Tid%22%3a%2200000000-0000-0000-0000-000000000000%22%2c%22Oid%22%3a%2200000000-0000-0000-0000-000000000000%22%7d");
         //displaying course info for online courses
         onlineCourse1.displayCourseInfo();
+        System.out.println();
         onlineCourse2.displayCourseInfo();
+        System.out.println();
         //using an online course setter method to update meeting link
         onlineCourse1.setMeetingLink("https://teams.microsoft.com/l/meetup-join/19%3ameeting_NmYyYzYzY2ItZGIxZi00Y2E3LWI3YzItY2E0ZTI3YjI0ZGI4%0598tu5grrjgr8H8rg");
         //displaying updated online course info
         onlineCourse1.displayCourseInfo();
+        System.out.println();
 
         //Physical Course objects
         ArrayList<String> prerequisitesDS = new ArrayList<>();
@@ -29,11 +35,14 @@ public class Registration {
         PhysicalCourse physicalCourse2 = new PhysicalCourse("WIA2005", "Network Technology Fundamentals", 4, 25, 25, null, 'A', "CCNA Lab", true);
         //displaying course info for physical courses
         physicalCourse1.displayCourseInfo();
+        System.out.println();
         physicalCourse2.displayCourseInfo();
+        System.out.println();
         //using a physical course setter method to update room name
         physicalCourse1.setRoomName("Makmal Mikro 6");
         //displaying updated physical course info
         physicalCourse1.displayCourseInfo();
+        System.out.println();
 
         Student student1 = new Student("Ali Jasim Bin Abdul Ghani", "24217998/1", 12);
         Student student2 = new Student("Muhammad Ziqri Bin Muhammad Yunus", "20017337/1", 21);
@@ -53,16 +62,17 @@ public class Registration {
         System.out.println("Can " + student1.getName() + " enroll in " + course3.getCourseCode() + " now?  " + st1Enroll5);
         //displaying student 1 info and enrolled courses
         student1.displayStudentInfo();
-
+        System.out.println();
         //dropping a course for student 1
         System.out.println(course2.getCourseName() + " current enrollment number: " + course2.getCurrentEnrollment());
         student1.dropCourse(course2);
         //displaying updated student 1 info and enrolled courses
         student1.displayStudentInfo();
+        System.out.println();
         //displaying course enrollment updated
         System.out.println(course2.getCourseName() + " new enrollment number: " + course2.getCurrentEnrollment());
 
-        //showing polymorphism
+        System.out.println("\nShowing polymorphism:\n");
         ArrayList<Course> courseList = new ArrayList<>();
         courseList.add(onlineCourse1);
         courseList.add(physicalCourse1);
@@ -73,7 +83,7 @@ public class Registration {
             System.out.println();
         }
 
-        System.out.println("\nTrying more invalid operations to check exception handling");
+        System.out.println("\nTrying more invalid operations to check exception handling\n");
 
         //setting negative course capacity
         try {

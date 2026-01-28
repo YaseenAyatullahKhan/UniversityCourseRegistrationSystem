@@ -10,9 +10,22 @@ public class OnlineCourse extends Course {
     public OnlineCourse() {}
     public OnlineCourse(String courseCode, String courseName, int creditHours, int maxCapacity, int currentEnrollment, ArrayList<String> prerequisites,String meetingPlatform, boolean recordingAvailable, String meetingLink) {
         super(courseCode, courseName, creditHours, maxCapacity, currentEnrollment, prerequisites);
-        this.meetingPlatform = meetingPlatform;
-        this.recordingAvailable = recordingAvailable;
-        this.meetingLink = meetingLink;
+        
+        if (meetingPlatform != null && !meetingPlatform.equals("")) {
+            this.meetingPlatform = meetingPlatform;
+        } else {
+            throw new IllegalArgumentException("Meeting platform cannot be null or empty!");
+        }
+        if (recordingAvailable == true || recordingAvailable == false) {
+            this.recordingAvailable = recordingAvailable;
+        } else {
+            throw new IllegalArgumentException("Invalid value for recordingAvailable: only true or false allowed!");
+        }
+        if (meetingLink != null && !meetingLink.equals("")) {
+            this.meetingLink = meetingLink;
+        } else {
+            throw new IllegalArgumentException("Meeting link cannot be null or empty!");
+        }
     }
 
     //getters and setters
@@ -29,16 +42,22 @@ public class OnlineCourse extends Course {
     public void setMeetingPlatform(String meetingPlatform) {
         if (meetingPlatform != null && !meetingPlatform.equals("")) {
             this.meetingPlatform = meetingPlatform;
+        } else {
+            throw new IllegalArgumentException("Meeting platform cannot be null or empty!");
         }
     }
     public void setRecordingAvailable(boolean recordingAvailable) {
         if (recordingAvailable == true || recordingAvailable == false) {
             this.recordingAvailable = recordingAvailable;
+        } else {
+            throw new IllegalArgumentException("Invalid value for recordingAvailable: only true or false allowed!");
         }
     }
     public void setMeetingLink(String meetingLink) {
         if (meetingLink != null && !meetingLink.equals("")) {
             this.meetingLink = meetingLink;
+        } else {
+            throw new IllegalArgumentException("Meeting link cannot be null or empty!");
         }
     }
 

@@ -9,11 +9,23 @@ public class Student {
     //constructors
     public Student() {}
     public Student(String studentID, String name, int maxCredits) {
-         this.name = name;
-         this.studentID = studentID;
-         this.maxCredits = maxCredits;
-         enrolledCourses = new ArrayList<>();
-         totalCreditsEnrolled = 0;
+        if (studentID != null && !studentID.equals("")) {
+            this.studentID = studentID;
+        } else {
+            throw new IllegalArgumentException("Student ID cannot be null or empty!");
+        }
+        if (name != null && !name.equals("")) { 
+            this.name = name;
+        } else {
+            throw new IllegalArgumentException("Student name cannot be null or empty!");
+        }
+        if (maxCredits > 0) {
+            this.maxCredits = maxCredits;
+        } else {
+            throw new IllegalArgumentException("Maximum credits must be greater than zero!");
+        }
+        enrolledCourses = new ArrayList<>();
+        totalCreditsEnrolled = 0;
     }
 
     public String getStudentID() {
@@ -30,18 +42,37 @@ public class Student {
     }
 
     public void setStudentID(String studentID) {
-        this.studentID = studentID;
+        if (studentID != null && !studentID.equals("")) {
+            this.studentID = studentID;
+        } else {
+            throw new IllegalArgumentException("Student ID cannot be null or empty!");
+        }
     }
     public void setName(String name) {
-        this.name = name;
+        if (name != null && !name.equals("")) { 
+            this.name = name;
+        } else {
+            throw new IllegalArgumentException("Student name cannot be null or empty!");
+        }
     }
     public void setMaxCredits(int maxCredits) {
-        this.maxCredits = maxCredits;
+        if (maxCredits > 0) {
+            this.maxCredits = maxCredits;
+        } else {
+            throw new IllegalArgumentException("Maximum credits must be greater than zero!");
+        }
     }
 
-    //methods
     boolean hasPrerequisites;
+    //methods
     public boolean enrollInCourse(Course course) {
+        //checking if student already enrolled in the course
+        for (int i = 0; i < enrolledCourses.size(); i++) {
+            if (enrolledCourses.get(i).getCourseCode().equals(course.getCourseCode())) {
+                throw new IllegalArgumentException("Student is already enrolled in this course!");
+            }
+        }
+        //for prerequisites
         if (course.getPrerequisites() != null) {
             //check if student has the prerequisite course(s)
             for (int x = 0; x < course.getPrerequisites().size(); x++) {
@@ -55,8 +86,8 @@ public class Student {
         } else {
             hasPrerequisites = true;
         }
-        //checking if student can enroll then adding the course
-        if ((hasPrerequisites == true) && (totalCreditsEnrolled + course.getCreditHours() <= maxCredits) && (course.getCurrentEnrollment() < course.getMaxCapacity())) {
+        //adding the course if student can enroll
+        if ((hasPrerequisites) && (totalCreditsEnrolled + course.getCreditHours() <= maxCredits) && (course.getCurrentEnrollment() < course.getMaxCapacity())) {
             enrolledCourses.add(course);
             totalCreditsEnrolled += course.getCreditHours();
             course.incrementEnrollment();
@@ -65,6 +96,15 @@ public class Student {
         return false;
     }
     public void dropCourse(Course course) {
+        //checking if student is enrolled in the course before dropping
+        for (Course c : enrolledCourses) {
+            if (c.getCourseCode().equals(course.getCourseCode())) {
+                break;
+            } else {
+                throw new IllegalArgumentException("Student is not enrolled in this course!");
+            }
+        }
+        //dropping the specified course for student
         if (enrolledCourses.remove(course) == true) {
             totalCreditsEnrolled -= course.getCreditHours();
             course.decrementEnrollment();
@@ -83,6 +123,6 @@ public class Student {
     }
     //method to check if student can enroll in more courses
     public boolean noMoreCourses() {
-        return (totalCreditsEnrolled > maxCredits);
+        return (totalCreditsEnrolled >= maxCredits);
     }
 }
