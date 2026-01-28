@@ -12,8 +12,8 @@ public class Registration {
         course3.displayCourseInfo();
 
         //Online Course objects
-        OnlineCourse onlineCourse1 = new OnlineCourse("GIG1003", "Basic Entrepreneurship Enculturation", 2, 1000, 937, null, "Google Meet");
-        OnlineCourse onlineCourse2 = new OnlineCourse("GLT1029", "Basic Arabic Language 1", 2, 15, 12, null, "Microsoft Teams");
+        OnlineCourse onlineCourse1 = new OnlineCourse("GIG1003", "Basic Entrepreneurship Enculturation", 2, 1000, 937, null, "Google Meet", false, "https://meet.google.com/lookup/abc-xyz-def");
+        OnlineCourse onlineCourse2 = new OnlineCourse("GLT1029", "Basic Arabic Language 1", 2, 15, 12, null, "Microsoft Teams", true, "https://teams.microsoft.com/l/meetup-join/19%3ameeting_NmYyYzYzY2ItZGIxZi00Y2E3LWI3YzItY2E0ZTI3YjI0ZGI4%40thread.v2/0?context=%7b%22Tid%22%3a%2200000000-0000-0000-0000-000000000000%22%2c%22Oid%22%3a%2200000000-0000-0000-0000-000000000000%22%7d");
         //displaying course info for online courses
         onlineCourse1.displayCourseInfo();
         onlineCourse2.displayCourseInfo();
@@ -25,8 +25,8 @@ public class Registration {
         //Physical Course objects
         ArrayList<String> prerequisitesDS = new ArrayList<>();
         prerequisitesDS.add("WIX1002");
-        PhysicalCourse physicalCourse1 = new PhysicalCourse("WIA1002", "Data Structures", 5, 50, 42, prerequisitesDS, "Lab 1");
-        PhysicalCourse physicalCourse2 = new PhysicalCourse("WIA2005", "Network Technology Fundamentals", 4, 25, 25, null, "CCNA Lab");
+        PhysicalCourse physicalCourse1 = new PhysicalCourse("WIA1002", "Data Structures", 5, 50, 42, prerequisitesDS, 'B', "Lab 1", false);
+        PhysicalCourse physicalCourse2 = new PhysicalCourse("WIA2005", "Network Technology Fundamentals", 4, 25, 25, null, 'A', "CCNA Lab", true);
         //displaying course info for physical courses
         physicalCourse1.displayCourseInfo();
         physicalCourse2.displayCourseInfo();
@@ -83,7 +83,7 @@ public class Registration {
         }
         //creating an Online Course with null value for course code
         try {
-            OnlineCourse invalidOnlineCourse = new OnlineCourse(null, "Invalid Course", 3, 30, 10, null, "Whatsapp Call");
+            OnlineCourse invalidOnlineCourse = new OnlineCourse(null, "Invalid Course", 3, 30, 10, null, "Whatsapp Call", false, "https://whatsapp.com/meet/invalid");
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
@@ -95,19 +95,13 @@ public class Registration {
         }
         //creating a Physical Course with empty Block
         try {
-            PhysicalCourse invalid = new PhysicalCourse("WWW3001", "Invalid Physical Course", 4, 40, 20, ' ', "Bilik Kuliah", true);
+            PhysicalCourse invalid1 = new PhysicalCourse("WWW3001", "Invalid Physical Course", 4, 40, 20, null, ' ', "Bilik Kuliah", true);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
         //creating a Physical Course with null room name
         try {
-            PhysicalCourse invalid2 = new PhysicalCourse("WWE5001", "Invalid Physical Course", 4, 40, 20, 'B', null, false);
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        }
-        //setting invalid hasLab value
-        try {
-            physicalCourse1.setHasLab("Maybe");
+            PhysicalCourse invalid2 = new PhysicalCourse("WWE5001", "Invalid Physical Course", 4, 40, 20, null, 'B', null, false);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
