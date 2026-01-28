@@ -62,7 +62,19 @@ public class Registration {
         //displaying course enrollment updated
         System.out.println(course2.getCourseName() + " new enrollment number: " + course2.getCurrentEnrollment());
 
-        //trying invalid operations
+        //showing polymorphism
+        ArrayList<Course> courseList = new ArrayList<>();
+        courseList.add(onlineCourse1);
+        courseList.add(physicalCourse1);
+        courseList.add(onlineCourse2);
+        courseList.add(physicalCourse2);
+        for (Course c : courseList) {
+            c.displayCourseInfo();
+            System.out.println();
+        }
+
+        System.out.println("\nTrying more invalid operations to check exception handling");
+
         //setting negative course capacity
         try {
             onlineCourse1.setMaxCapacity(-1);
@@ -75,18 +87,53 @@ public class Registration {
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
-        //add 1-2 more for online course, more for physical course then for student
-        
-
-        //showing polymorphism
-        ArrayList<Course> courseList = new ArrayList<>();
-        courseList.add(onlineCourse1);
-        courseList.add(physicalCourse1);
-        courseList.add(onlineCourse2);
-        courseList.add(physicalCourse2);
-        for (Course c : courseList) {
-            c.displayCourseInfo();
-            System.out.println();
+        //empty meeting platform
+        try {
+            onlineCourse2.setMeetingPlatform("");
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+        //creating a Physical Course with empty Block
+        try {
+            PhysicalCourse invalid = new PhysicalCourse("WWW3001", "Invalid Physical Course", 4, 40, 20, ' ', "Bilik Kuliah", true);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+        //creating a Physical Course with null room name
+        try {
+            PhysicalCourse invalid2 = new PhysicalCourse("WWE5001", "Invalid Physical Course", 4, 40, 20, 'B', null, false);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+        //setting invalid hasLab value
+        try {
+            physicalCourse1.setHasLab("Maybe");
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+        //creating student with empty name
+        try {
+            Student invalidStudent1 = new Student("", "24323971/1", 15);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+        //creating student with null ID
+        try {
+            Student invalidStudent2 = new Student("Muhammad Mujahid bin Abdullah", null, 17);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+        //enrolling student1 in a course already enrolled in
+        try {
+            boolean doubleEnroll = student1.enrollInCourse(physicalCourse1);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+        //dropping a course not enrolled in by student1
+        try {
+            student1.dropCourse(course3);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
         }
     }
 }

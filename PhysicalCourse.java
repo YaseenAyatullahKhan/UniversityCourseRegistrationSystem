@@ -24,18 +24,27 @@ public class PhysicalCourse extends Course {
     }
 
     public void setWhichBlock(char whichBlock) {
-        this.whichBlock = whichBlock;
+        if (whichBlock != ' ') {
+            this.whichBlock = whichBlock;
+        } else {
+            throw new IllegalArgumentException("Block cannot be empty!");
+        }
     }
     public void setRoomName(String roomName) {
         if (roomName != null && !roomName.equals("")) {
             this.roomName = roomName;
+        } else {
+            throw new IllegalArgumentException("Room name cannot be null or empty!");
         }
     }
     public void setHasLab(boolean hasLab) {
         if (hasLab == true || hasLab == false) {
             this.hasLab = hasLab;
+        } else {
+            throw new IllegalArgumentException("Invalid input for hasLab: only true or false allowed!");
         }
     }
+    
     //overriden display method
     @Override
     public void displayCourseInfo() {
